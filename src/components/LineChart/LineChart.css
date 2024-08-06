@@ -1,0 +1,25 @@
+/* LineChart.css */
+
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    height: 280px; /* Adjust the height as needed */
+    margin: 0 auto;
+    
+  }
+  
+  @media (max-width: 768px) {
+    .chart-container {
+      height: 250px; /* Adjust the height for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chart-container {
+      height: 200px; /* Adjust the height for even smaller screens */
+      width: 95%;
+      padding-left: 0px;
+      
+    }
+  }
+  
