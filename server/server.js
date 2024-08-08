@@ -3,10 +3,16 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const flash = require('connect-flash');
+const path = require('path');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+// Use the Client app
+
+app.use(express.static(path.join(__dirname, '/client/dist')))
 // Middleware setup
 app.use(cors());
 app.use(bodyParser.json());
@@ -18,6 +24,11 @@ app.use(session({
 }));
 app.use(flash());
 
+
+// Use the Client app
+
+app.get('*', (req, res) =>
+      res.sendFile(path.join(__dirname, '/client/dist')))
 // Middleware to protect routes
 const isAuthenticated = (req, res, next) => {
   if (req.session.isAuthenticated) {
